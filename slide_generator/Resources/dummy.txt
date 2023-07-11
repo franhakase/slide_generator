@@ -1,0 +1,96 @@
+<script>
+//MUDAR AQUI O TEMPO ENTRE TROCA DE IMAGENS
+var TEMPO_ENTRE_SLIDES = @NRO_SEGUNDOS * 1000;
+</script>
+<html>
+<head>
+	<title>Simple slide!</title>
+</head>
+<style>
+* {box-sizing:border-box}
+.slideshow-container 
+{
+	max-width: 90%;
+	position: relative;
+	margin: auto;
+}
+img
+{
+	object-fit:contain;
+	width:90%;
+	height:90%;
+}
+.fade 
+{
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 3.5s;
+	animation-name: fade;
+	animation-duration: 3.5s;
+	display:flex; place-content: space-around;
+	text-align:center;
+	display:flex; 
+	place-content: space-around;
+}
+@-webkit-keyframes fade 
+{
+  from {opacity: .1}
+  to {opacity: 1}
+}
+@keyframes fade 
+{
+  from {opacity: .1}
+  to {opacity: 1}
+}
+.mySlides 
+{
+  display: none;
+}
+
+</style>
+<!-- Slideshow container -->
+<div class="slideshow-container" id = "gesturedZone">
+
+<!-- <div class="mySlides fade"><img src="Fã Arte (1).png" style=""></div> -->
+@DIV_IMG_AQUI
+</div>
+<br>
+<script>
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+}
+
+var curr = 1;
+var max = 7;
+setInterval(function(){
+if(curr > max)
+{
+	curr = 1;
+}else
+{
+	curr++;
+}
+currentSlide(curr);
+
+}, TEMPO_ENTRE_SLIDES);
+</script>
+</html>
